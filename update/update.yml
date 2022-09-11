@@ -1,0 +1,29 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+  - name: fix and attempt to correct a system with broken dependencies
+    apt:
+      state: fixed
+
+  - name: update apt cache
+    apt:
+      update_cache: yes
+
+  - name: upgrade packages
+    apt:
+      upgrade: yes
+
+  - name: distribution upgrade
+    apt:
+      upgrade: dist
+  
+  - name: remove unused packages
+    apt:
+      autoremove: yes
+
+  - name: clean up
+    apt:
+      autoclean: yes
