@@ -1,0 +1,10 @@
+###########################################################
+#    Please change the "directory" variable to whatever   #
+#      your working directory is for your development     #
+#                       environment                       #
+###########################################################
+
+directory: root/code/ansible/
+projects: "{{ directory }}projects"
+layout: "{{ directory }}/new_project/default_layout"
+alt_layout: "{{ directory }}/new_project/alternate_layout"

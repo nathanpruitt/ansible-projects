@@ -1,0 +1,40 @@
+---
+# Playbook to setup folder strucutures for a new project
+- name: Creating a New Ansible Project
+  hosts: localhost
+  vars_files:
+    - "host_vars/localhost.yml"
+
+# This will prompt you to type your new project's directory name in the console
+  vars_prompt:
+
+    - name: project 
+      prompt: Name of new project?
+      private: False
+
+  tasks: 
+
+  # We are going to first create the root folder for your new project based on the project name you typed in the prompt above
+  - name: Create Project Directory
+    file:
+      path: /{{ projects }}/{{ project }}
+      state: directory
+    delegate_to: localhost
+
+  # This task will copy the default directory struture into your new project folder created above; please use --skip-tags "alt_layout" to apply this layout
+  - name: Copy Default Layout Into New Project
+    copy:
+      src: /{{ layout }}/
+      dest: /{{ projects }}/{{ project }}/
+      force: no
+    tags:
+      - default_layout
+
+  # This task will copy the default directory struture into your new project folder created above; please use --skip-tags "default_layout" to apply this layout
+  - name: Copy Alternate Layout Into New Project
+    copy:
+      src: /{{ alt_layout }}/
+      dest: /{{ projects }}/{{ project }}/
+      force: no
+    tags:
+      - alt_layout
