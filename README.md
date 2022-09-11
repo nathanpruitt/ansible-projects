@@ -1,4 +1,11 @@
+
 # Ansible Projects
+
+> ## Disclaimer
+>
+> I am new to using Ansible. Anything here should be reviewed and used with caution.
+
+## Purpose
 
 These are my public Ansible projects.
 
